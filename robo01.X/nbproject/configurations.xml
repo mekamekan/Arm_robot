@@ -17,14 +17,10 @@
         <itemPath>mcc_generated_files/tmr1.h</itemPath>
         <itemPath>mcc_generated_files/device_config.h</itemPath>
         <itemPath>mcc_generated_files/eusart.h</itemPath>
-        <itemPath>mcc_generated_files/ccp2.h</itemPath>
-        <itemPath>mcc_generated_files/ccp1.h</itemPath>
         <itemPath>mcc_generated_files/pwm3.h</itemPath>
         <itemPath>mcc_generated_files/pwm4.h</itemPath>
         <itemPath>mcc_generated_files/adc.h</itemPath>
         <itemPath>mcc_generated_files/pwm11.h</itemPath>
-        <itemPath>mcc_generated_files/ccp8.h</itemPath>
-        <itemPath>mcc_generated_files/ccp7.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -44,8 +40,6 @@
         <itemPath>mcc_generated_files/device_config.c</itemPath>
         <itemPath>mcc_generated_files/interrupt_manager.c</itemPath>
         <itemPath>mcc_generated_files/pin_manager.c</itemPath>
-        <itemPath>mcc_generated_files/ccp2.c</itemPath>
-        <itemPath>mcc_generated_files/ccp1.c</itemPath>
         <itemPath>mcc_generated_files/pwm4.c</itemPath>
         <itemPath>mcc_generated_files/pwm5.c</itemPath>
         <itemPath>mcc_generated_files/pwm3.c</itemPath>
@@ -53,8 +47,6 @@
         <itemPath>mcc_generated_files/pwm6.c</itemPath>
         <itemPath>mcc_generated_files/eusart.c</itemPath>
         <itemPath>mcc_generated_files/pwm11.c</itemPath>
-        <itemPath>mcc_generated_files/ccp7.c</itemPath>
-        <itemPath>mcc_generated_files/ccp8.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
     </logicalFolder>

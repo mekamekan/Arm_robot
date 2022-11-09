@@ -23689,10 +23689,42 @@ extern __bank0 __bit __timeout;
 # 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
-# 523 "./mcc_generated_files/pin_manager.h"
+# 555 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 535 "./mcc_generated_files/pin_manager.h"
+# 567 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
+# 580 "./mcc_generated_files/pin_manager.h"
+void IOCBF0_ISR(void);
+# 603 "./mcc_generated_files/pin_manager.h"
+void IOCBF0_SetInterruptHandler(void (* InterruptHandler)(void));
+# 627 "./mcc_generated_files/pin_manager.h"
+extern void (*IOCBF0_InterruptHandler)(void);
+# 651 "./mcc_generated_files/pin_manager.h"
+void IOCBF0_DefaultInterruptHandler(void);
+# 664 "./mcc_generated_files/pin_manager.h"
+void IOCBF1_ISR(void);
+# 687 "./mcc_generated_files/pin_manager.h"
+void IOCBF1_SetInterruptHandler(void (* InterruptHandler)(void));
+# 711 "./mcc_generated_files/pin_manager.h"
+extern void (*IOCBF1_InterruptHandler)(void);
+# 735 "./mcc_generated_files/pin_manager.h"
+void IOCBF1_DefaultInterruptHandler(void);
+# 748 "./mcc_generated_files/pin_manager.h"
+void IOCCF2_ISR(void);
+# 771 "./mcc_generated_files/pin_manager.h"
+void IOCCF2_SetInterruptHandler(void (* InterruptHandler)(void));
+# 795 "./mcc_generated_files/pin_manager.h"
+extern void (*IOCCF2_InterruptHandler)(void);
+# 819 "./mcc_generated_files/pin_manager.h"
+void IOCCF2_DefaultInterruptHandler(void);
+# 832 "./mcc_generated_files/pin_manager.h"
+void IOCCF3_ISR(void);
+# 855 "./mcc_generated_files/pin_manager.h"
+void IOCCF3_SetInterruptHandler(void (* InterruptHandler)(void));
+# 879 "./mcc_generated_files/pin_manager.h"
+extern void (*IOCCF3_InterruptHandler)(void);
+# 903 "./mcc_generated_files/pin_manager.h"
+void IOCCF3_DefaultInterruptHandler(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
 
@@ -23887,99 +23919,12 @@ _Bool PWM11_IsDutyCycleMatchOccured(void);
 _Bool PWM11_IsPeriodMatchOccured(void);
 # 56 "./mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/ccp2.h" 1
-# 80 "./mcc_generated_files/ccp2.h"
-typedef union CCPR2Reg_tag
-{
-   struct
-   {
-      uint8_t ccpr2l;
-      uint8_t ccpr2h;
-   };
-   struct
-   {
-      uint16_t ccpr2_16Bit;
-   };
-} CCP2_PERIOD_REG_T ;
-# 123 "./mcc_generated_files/ccp2.h"
-void CCP2_Initialize(void);
-# 139 "./mcc_generated_files/ccp2.h"
-void CCP2_CaptureISR(void);
-# 180 "./mcc_generated_files/ccp2.h"
- void CCP2_SetCallBack(void (*customCallBack)(uint16_t));
-# 57 "./mcc_generated_files/mcc.h" 2
-
-# 1 "./mcc_generated_files/ccp1.h" 1
-# 80 "./mcc_generated_files/ccp1.h"
-typedef union CCPR1Reg_tag
-{
-   struct
-   {
-      uint8_t ccpr1l;
-      uint8_t ccpr1h;
-   };
-   struct
-   {
-      uint16_t ccpr1_16Bit;
-   };
-} CCP1_PERIOD_REG_T ;
-# 123 "./mcc_generated_files/ccp1.h"
-void CCP1_Initialize(void);
-# 139 "./mcc_generated_files/ccp1.h"
-void CCP1_CaptureISR(void);
-# 180 "./mcc_generated_files/ccp1.h"
- void CCP1_SetCallBack(void (*customCallBack)(uint16_t));
-# 58 "./mcc_generated_files/mcc.h" 2
-
 # 1 "./mcc_generated_files/pwm9.h" 1
 # 102 "./mcc_generated_files/pwm9.h"
  void PWM9_Initialize(void);
 # 129 "./mcc_generated_files/pwm9.h"
  void PWM9_LoadDutyValue(uint16_t dutyValue);
-# 59 "./mcc_generated_files/mcc.h" 2
-
-# 1 "./mcc_generated_files/tmr1.h" 1
-# 100 "./mcc_generated_files/tmr1.h"
-void TMR1_Initialize(void);
-# 129 "./mcc_generated_files/tmr1.h"
-void TMR1_StartTimer(void);
-# 161 "./mcc_generated_files/tmr1.h"
-void TMR1_StopTimer(void);
-# 196 "./mcc_generated_files/tmr1.h"
-uint16_t TMR1_ReadTimer(void);
-# 235 "./mcc_generated_files/tmr1.h"
-void TMR1_WriteTimer(uint16_t timerVal);
-# 271 "./mcc_generated_files/tmr1.h"
-void TMR1_Reload(void);
-# 310 "./mcc_generated_files/tmr1.h"
-void TMR1_StartSinglePulseAcquisition(void);
-# 349 "./mcc_generated_files/tmr1.h"
-uint8_t TMR1_CheckGateValueStatus(void);
-# 387 "./mcc_generated_files/tmr1.h"
-_Bool TMR1_HasOverflowOccured(void);
-# 60 "./mcc_generated_files/mcc.h" 2
-
-# 1 "./mcc_generated_files/ccp8.h" 1
-# 80 "./mcc_generated_files/ccp8.h"
-typedef union CCPR8Reg_tag
-{
-   struct
-   {
-      uint8_t ccpr8l;
-      uint8_t ccpr8h;
-   };
-   struct
-   {
-      uint16_t ccpr8_16Bit;
-   };
-} CCP8_PERIOD_REG_T ;
-# 123 "./mcc_generated_files/ccp8.h"
-void CCP8_Initialize(void);
-# 139 "./mcc_generated_files/ccp8.h"
-void CCP8_CaptureISR(void);
-# 180 "./mcc_generated_files/ccp8.h"
- void CCP8_SetCallBack(void (*customCallBack)(uint16_t));
-# 61 "./mcc_generated_files/mcc.h" 2
+# 57 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pwm6.h" 1
 # 94 "./mcc_generated_files/pwm6.h"
@@ -24010,7 +23955,28 @@ _Bool PWM6_IsPhaseMatchOccured(void);
 _Bool PWM6_IsDutyCycleMatchOccured(void);
 # 414 "./mcc_generated_files/pwm6.h"
 _Bool PWM6_IsPeriodMatchOccured(void);
-# 62 "./mcc_generated_files/mcc.h" 2
+# 58 "./mcc_generated_files/mcc.h" 2
+
+# 1 "./mcc_generated_files/tmr1.h" 1
+# 100 "./mcc_generated_files/tmr1.h"
+void TMR1_Initialize(void);
+# 129 "./mcc_generated_files/tmr1.h"
+void TMR1_StartTimer(void);
+# 161 "./mcc_generated_files/tmr1.h"
+void TMR1_StopTimer(void);
+# 196 "./mcc_generated_files/tmr1.h"
+uint16_t TMR1_ReadTimer(void);
+# 235 "./mcc_generated_files/tmr1.h"
+void TMR1_WriteTimer(uint16_t timerVal);
+# 271 "./mcc_generated_files/tmr1.h"
+void TMR1_Reload(void);
+# 310 "./mcc_generated_files/tmr1.h"
+void TMR1_StartSinglePulseAcquisition(void);
+# 349 "./mcc_generated_files/tmr1.h"
+uint8_t TMR1_CheckGateValueStatus(void);
+# 387 "./mcc_generated_files/tmr1.h"
+_Bool TMR1_HasOverflowOccured(void);
+# 59 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/tmr2.h" 1
 # 79 "./mcc_generated_files/tmr2.h"
@@ -24270,36 +24236,14 @@ void TMR2_Period8BitSet(uint8_t periodVal);
 void TMR2_LoadPeriodRegister(uint8_t periodVal);
 # 867 "./mcc_generated_files/tmr2.h"
 _Bool TMR2_HasOverflowOccured(void);
-# 63 "./mcc_generated_files/mcc.h" 2
+# 60 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pwm4.h" 1
 # 102 "./mcc_generated_files/pwm4.h"
  void PWM4_Initialize(void);
 # 129 "./mcc_generated_files/pwm4.h"
  void PWM4_LoadDutyValue(uint16_t dutyValue);
-# 64 "./mcc_generated_files/mcc.h" 2
-
-# 1 "./mcc_generated_files/ccp7.h" 1
-# 80 "./mcc_generated_files/ccp7.h"
-typedef union CCPR7Reg_tag
-{
-   struct
-   {
-      uint8_t ccpr7l;
-      uint8_t ccpr7h;
-   };
-   struct
-   {
-      uint16_t ccpr7_16Bit;
-   };
-} CCP7_PERIOD_REG_T ;
-# 123 "./mcc_generated_files/ccp7.h"
-void CCP7_Initialize(void);
-# 139 "./mcc_generated_files/ccp7.h"
-void CCP7_CaptureISR(void);
-# 180 "./mcc_generated_files/ccp7.h"
- void CCP7_SetCallBack(void (*customCallBack)(uint16_t));
-# 65 "./mcc_generated_files/mcc.h" 2
+# 61 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pwm5.h" 1
 # 94 "./mcc_generated_files/pwm5.h"
@@ -24330,14 +24274,14 @@ _Bool PWM5_IsPhaseMatchOccured(void);
 _Bool PWM5_IsDutyCycleMatchOccured(void);
 # 414 "./mcc_generated_files/pwm5.h"
 _Bool PWM5_IsPeriodMatchOccured(void);
-# 66 "./mcc_generated_files/mcc.h" 2
+# 62 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pwm3.h" 1
 # 102 "./mcc_generated_files/pwm3.h"
  void PWM3_Initialize(void);
 # 129 "./mcc_generated_files/pwm3.h"
  void PWM3_LoadDutyValue(uint16_t dutyValue);
-# 67 "./mcc_generated_files/mcc.h" 2
+# 63 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/adc.h" 1
 # 72 "./mcc_generated_files/adc.h"
@@ -24393,7 +24337,7 @@ void ADC_ISR(void);
 extern void (*ADC_InterruptHandler)(void);
 # 398 "./mcc_generated_files/adc.h"
 void ADC_DefaultInterruptHandler(void);
-# 68 "./mcc_generated_files/mcc.h" 2
+# 64 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/eusart.h" 1
 # 75 "./mcc_generated_files/eusart.h"
@@ -24448,12 +24392,12 @@ void EUSART_SetErrorHandler(void (* interruptHandler)(void));
 void EUSART_SetTxInterruptHandler(void (* interruptHandler)(void));
 # 505 "./mcc_generated_files/eusart.h"
 void EUSART_SetRxInterruptHandler(void (* interruptHandler)(void));
-# 69 "./mcc_generated_files/mcc.h" 2
-# 84 "./mcc_generated_files/mcc.h"
+# 65 "./mcc_generated_files/mcc.h" 2
+# 80 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 97 "./mcc_generated_files/mcc.h"
+# 93 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 109 "./mcc_generated_files/mcc.h"
+# 105 "./mcc_generated_files/mcc.h"
 void WDT_Initialize(void);
 # 44 "main.c" 2
 
@@ -24827,25 +24771,22 @@ double y0(double);
 double y1(double);
 double yn(int, double);
 # 45 "main.c" 2
-
-
-
-
-
-unsigned int g_PWM1_rising_value;
-unsigned int g_PWM1_falling_value;
-unsigned int g_PWM1_pulse_width;
-
-unsigned int g_PWM2_rising_value;
-unsigned int g_PWM2_falling_value;
-unsigned int g_PWM2_pulse_width;
+# 61 "main.c"
+int g_ch1_rising_value, g_ch1_falling_value, g_ch1_pulse_width;
+int g_ch2_rising_value, g_ch2_falling_value, g_ch2_pulse_width;
 
 void putch(char data);
-void PWM1_Rising_interrupt(unsigned int PWM1_rising_value);
-void PWM1_Falling_interrupt(unsigned int PWM1_falling_value);
 
-void PWM2_Rising_interrupt(unsigned int PWM2_rising_value);
-void PWM2_Falling_interrupt(unsigned int PWM2_falling_value);
+
+
+
+
+
+void CH1_Rising_interrupt(void);
+void CH1_Falling_interrupt(void);
+void CH2_Rising_interrupt(void);
+void CH2_Falling_interrupt(void);
+
 
 void m1_on(int duty);
 void m2_on(int duty);
@@ -24865,7 +24806,7 @@ void main(void)
     int x, y;
     int x_duty, y_duty;
     int lservo_duty = 3000, mservo_duty = 3000;
-    unsigned int PWM1_pulse_width, PWM2_pulse_width;
+    int ch1_pulse_width, ch2_pulse_width;
 
 
 
@@ -24877,23 +24818,19 @@ void main(void)
 
 
     (INTCONbits.PEIE = 1);
-
-
-
-
-
-
-
-    CCP1_SetCallBack(PWM1_Rising_interrupt);
-    CCP2_SetCallBack(PWM1_Falling_interrupt);
-    CCP7_SetCallBack(PWM2_Rising_interrupt);
-    CCP8_SetCallBack(PWM2_Falling_interrupt);
+# 119 "main.c"
+    IOCBF0_SetInterruptHandler(CH2_Rising_interrupt);
+    IOCBF1_SetInterruptHandler(CH2_Falling_interrupt);
+    IOCCF2_SetInterruptHandler(CH1_Rising_interrupt);
+    IOCCF3_SetInterruptHandler(CH1_Falling_interrupt);
 
     m1_on(0);
     m2_on(0);
     m3_on(0);
     m4_on(0);
     _delay((unsigned long)((1000)*(32000000/4000.0)));
+
+    TMR1_StartTimer();
 
     while (1)
     {
@@ -24910,57 +24847,58 @@ void main(void)
 
 
 
-        if((0 <= g_PWM2_pulse_width) && (g_PWM2_pulse_width < 400)){
+        if((0 <= g_ch2_pulse_width) && (g_ch2_pulse_width < 400)){
 
 
-            PWM2_pulse_width = 0;
-
-        }
-        else if((1500 <= g_PWM2_pulse_width) && (g_PWM2_pulse_width <= 1600)){
-
-            PWM2_pulse_width = 1550;
+            ch2_pulse_width = 0;
 
         }
-        else if(3200 < g_PWM2_pulse_width){
+        else if((1500 <= g_ch2_pulse_width) && (g_ch2_pulse_width <= 1600)){
 
-            PWM2_pulse_width = 3200;
-
-        }
-        else{
-
-            PWM2_pulse_width = g_PWM2_pulse_width;
+            ch2_pulse_width = 1550;
 
         }
+        else if(3200 < g_ch2_pulse_width){
 
-
-
-        if((0 <= g_PWM1_pulse_width) && (g_PWM1_pulse_width < 400)){
-
-
-            PWM1_pulse_width = 0;
-
-        }
-        else if((1500 <= g_PWM1_pulse_width) && (g_PWM1_pulse_width <= 1600)){
-
-            PWM1_pulse_width = 1550;
-
-        }
-        else if(3200 < g_PWM1_pulse_width){
-
-            PWM1_pulse_width = 3200;
+            ch2_pulse_width = 3200;
 
         }
         else{
 
-            PWM1_pulse_width = g_PWM1_pulse_width;
+            ch2_pulse_width = g_ch2_pulse_width;
+
+        }
+
+
+
+        if((0 <= g_ch1_pulse_width) && (g_ch1_pulse_width < 400)){
+
+
+            ch1_pulse_width = 0;
+
+        }
+        else if((1500 <= g_ch1_pulse_width) && (g_ch1_pulse_width <= 1600)){
+
+            ch1_pulse_width = 1550;
+
+        }
+        else if(3200 < g_ch1_pulse_width){
+
+            ch1_pulse_width = 3200;
+
+        }
+        else{
+
+            ch1_pulse_width = g_ch1_pulse_width;
 
         }
 
 
 
 
-        x = PWM2_pulse_width - 1550;
-        y = PWM1_pulse_width - 1550;
+
+        x = ch2_pulse_width - 1550;
+        y = ch1_pulse_width - 1550;
 
 
 
@@ -25046,44 +24984,37 @@ void putch(char data){
     EUSART_Write(data);
 
 }
-void PWM1_Rising_interrupt(unsigned int PWM1_rising_value){
 
-    g_PWM1_rising_value = PWM1_rising_value;
+void CH1_Rising_interrupt(void){
 
+    g_ch1_rising_value = TMR1_ReadTimer();
 }
-void PWM1_Falling_interrupt(unsigned int PWM1_falling_value){
+void CH1_Falling_interrupt(void){
 
-    g_PWM1_falling_value = PWM1_falling_value;
-
-    if(g_PWM1_rising_value > g_PWM1_falling_value){
-
-
+    g_ch1_falling_value = TMR1_ReadTimer();
+    if(g_ch1_rising_value > g_ch1_falling_value){
         ;
     }
     else
-        g_PWM1_pulse_width = g_PWM1_falling_value - g_PWM1_rising_value;
+        g_ch1_pulse_width = g_ch1_falling_value - g_ch1_rising_value;
+
 
 }
+void CH2_Rising_interrupt(void){
 
-void PWM2_Rising_interrupt(unsigned int PWM2_rising_value){
-
-    g_PWM2_rising_value = PWM2_rising_value;
+    g_ch2_rising_value = TMR1_ReadTimer();
 
 }
-void PWM2_Falling_interrupt(unsigned int PWM2_falling_value){
+void CH2_Falling_interrupt(void){
 
-    g_PWM2_falling_value = PWM2_falling_value;
-
-    if(g_PWM2_rising_value > g_PWM2_falling_value){
-
-
+    g_ch2_falling_value = TMR1_ReadTimer();
+    if(g_ch2_rising_value > g_ch2_falling_value){
         ;
     }
     else
-        g_PWM2_pulse_width = g_PWM2_falling_value - g_PWM2_rising_value;
+        g_ch2_pulse_width = g_ch2_falling_value - g_ch2_rising_value;
 
 }
-
 void m1_on(int duty){
 
     if(duty > 0){

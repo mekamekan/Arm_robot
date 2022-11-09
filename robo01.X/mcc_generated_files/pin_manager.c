@@ -51,6 +51,11 @@
 
 
 
+void (*IOCBF0_InterruptHandler)(void);
+void (*IOCBF1_InterruptHandler)(void);
+void (*IOCCF2_InterruptHandler)(void);
+void (*IOCCF3_InterruptHandler)(void);
+
 
 void PIN_MANAGER_Initialize(void)
 {
@@ -118,29 +123,199 @@ void PIN_MANAGER_Initialize(void)
     INLVLD = 0xFF;
 
 
+    /**
+    IOCx registers 
+    */
+    //interrupt on change for group IOCBF - flag
+    IOCBFbits.IOCBF0 = 0;
+    //interrupt on change for group IOCBF - flag
+    IOCBFbits.IOCBF1 = 0;
+    //interrupt on change for group IOCBN - negative
+    IOCBNbits.IOCBN0 = 0;
+    //interrupt on change for group IOCBN - negative
+    IOCBNbits.IOCBN1 = 1;
+    //interrupt on change for group IOCBP - positive
+    IOCBPbits.IOCBP0 = 1;
+    //interrupt on change for group IOCBP - positive
+    IOCBPbits.IOCBP1 = 0;
+    //interrupt on change for group IOCCF - flag
+    IOCCFbits.IOCCF2 = 0;
+    //interrupt on change for group IOCCF - flag
+    IOCCFbits.IOCCF3 = 0;
+    //interrupt on change for group IOCCN - negative
+    IOCCNbits.IOCCN2 = 0;
+    //interrupt on change for group IOCCN - negative
+    IOCCNbits.IOCCN3 = 1;
+    //interrupt on change for group IOCCP - positive
+    IOCCPbits.IOCCP2 = 1;
+    //interrupt on change for group IOCCP - positive
+    IOCCPbits.IOCCP3 = 0;
 
 
 
+    // register default IOC callback functions at runtime; use these methods to register a custom function
+    IOCBF0_SetInterruptHandler(IOCBF0_DefaultInterruptHandler);
+    IOCBF1_SetInterruptHandler(IOCBF1_DefaultInterruptHandler);
+    IOCCF2_SetInterruptHandler(IOCCF2_DefaultInterruptHandler);
+    IOCCF3_SetInterruptHandler(IOCCF3_DefaultInterruptHandler);
    
+    // Enable IOCI interrupt 
+    INTCONbits.IOCIE = 1; 
     
 	
-    RXPPS = 0x0D;   //RB5->EUSART:RX;    
-    CCP2PPS = 0x13;   //RC3->CCP2:CCP2;    
-    CCP1PPS = 0x12;   //RC2->CCP1:CCP1;    
-    RB4PPS = 0x24;   //RB4->EUSART:TX;    
     RD2PPS = 0x1E;   //RD2->PWM6:PWM6OUT;    
-    CCP8PPS = 0x09;   //RB1->CCP8:CCP8;    
+    RXPPS = 0x0D;   //RB5->EUSART:RX;    
     RA4PPS = 0x1B;   //RA4->PWM9:PWM9OUT;    
     RD5PPS = 0x1A;   //RD5->PWM4:PWM4OUT;    
     ADCACTPPS = 0x0E;   //RB6->ADC:ADCACT;    
     RD3PPS = 0x1D;   //RD3->PWM5:PWM5OUT;    
     RA5PPS = 0x19;   //RA5->PWM3:PWM3OUT;    
+    RB4PPS = 0x24;   //RB4->EUSART:TX;    
     RD1PPS = 0x1F;   //RD1->PWM11:PWM11OUT;    
-    CCP7PPS = 0x08;   //RB0->CCP7:CCP7;    
 }
   
 void PIN_MANAGER_IOC(void)
 {   
+	// interrupt on change for pin IOCBF0
+    if(IOCBFbits.IOCBF0 == 1)
+    {
+        IOCBF0_ISR();  
+    }	
+	// interrupt on change for pin IOCBF1
+    if(IOCBFbits.IOCBF1 == 1)
+    {
+        IOCBF1_ISR();  
+    }	
+	// interrupt on change for pin IOCCF2
+    if(IOCCFbits.IOCCF2 == 1)
+    {
+        IOCCF2_ISR();  
+    }	
+	// interrupt on change for pin IOCCF3
+    if(IOCCFbits.IOCCF3 == 1)
+    {
+        IOCCF3_ISR();  
+    }	
+}
+
+/**
+   IOCBF0 Interrupt Service Routine
+*/
+void IOCBF0_ISR(void) {
+
+    // Add custom IOCBF0 code
+
+    // Call the interrupt handler for the callback registered at runtime
+    if(IOCBF0_InterruptHandler)
+    {
+        IOCBF0_InterruptHandler();
+    }
+    IOCBFbits.IOCBF0 = 0;
+}
+
+/**
+  Allows selecting an interrupt handler for IOCBF0 at application runtime
+*/
+void IOCBF0_SetInterruptHandler(void (* InterruptHandler)(void)){
+    IOCBF0_InterruptHandler = InterruptHandler;
+}
+
+/**
+  Default interrupt handler for IOCBF0
+*/
+void IOCBF0_DefaultInterruptHandler(void){
+    // add your IOCBF0 interrupt custom code
+    // or set custom function using IOCBF0_SetInterruptHandler()
+}
+
+/**
+   IOCBF1 Interrupt Service Routine
+*/
+void IOCBF1_ISR(void) {
+
+    // Add custom IOCBF1 code
+
+    // Call the interrupt handler for the callback registered at runtime
+    if(IOCBF1_InterruptHandler)
+    {
+        IOCBF1_InterruptHandler();
+    }
+    IOCBFbits.IOCBF1 = 0;
+}
+
+/**
+  Allows selecting an interrupt handler for IOCBF1 at application runtime
+*/
+void IOCBF1_SetInterruptHandler(void (* InterruptHandler)(void)){
+    IOCBF1_InterruptHandler = InterruptHandler;
+}
+
+/**
+  Default interrupt handler for IOCBF1
+*/
+void IOCBF1_DefaultInterruptHandler(void){
+    // add your IOCBF1 interrupt custom code
+    // or set custom function using IOCBF1_SetInterruptHandler()
+}
+
+/**
+   IOCCF2 Interrupt Service Routine
+*/
+void IOCCF2_ISR(void) {
+
+    // Add custom IOCCF2 code
+
+    // Call the interrupt handler for the callback registered at runtime
+    if(IOCCF2_InterruptHandler)
+    {
+        IOCCF2_InterruptHandler();
+    }
+    IOCCFbits.IOCCF2 = 0;
+}
+
+/**
+  Allows selecting an interrupt handler for IOCCF2 at application runtime
+*/
+void IOCCF2_SetInterruptHandler(void (* InterruptHandler)(void)){
+    IOCCF2_InterruptHandler = InterruptHandler;
+}
+
+/**
+  Default interrupt handler for IOCCF2
+*/
+void IOCCF2_DefaultInterruptHandler(void){
+    // add your IOCCF2 interrupt custom code
+    // or set custom function using IOCCF2_SetInterruptHandler()
+}
+
+/**
+   IOCCF3 Interrupt Service Routine
+*/
+void IOCCF3_ISR(void) {
+
+    // Add custom IOCCF3 code
+
+    // Call the interrupt handler for the callback registered at runtime
+    if(IOCCF3_InterruptHandler)
+    {
+        IOCCF3_InterruptHandler();
+    }
+    IOCCFbits.IOCCF3 = 0;
+}
+
+/**
+  Allows selecting an interrupt handler for IOCCF3 at application runtime
+*/
+void IOCCF3_SetInterruptHandler(void (* InterruptHandler)(void)){
+    IOCCF3_InterruptHandler = InterruptHandler;
+}
+
+/**
+  Default interrupt handler for IOCCF3
+*/
+void IOCCF3_DefaultInterruptHandler(void){
+    // add your IOCCF3 interrupt custom code
+    // or set custom function using IOCCF3_SetInterruptHandler()
 }
 
 /**

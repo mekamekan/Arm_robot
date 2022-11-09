@@ -47,20 +47,32 @@
 /*
                          Main application
  */
-unsigned int g_PWM1_rising_value;
+/*unsigned int g_PWM1_rising_value;
 unsigned int g_PWM1_falling_value;
 unsigned int g_PWM1_pulse_width;
 
 unsigned int g_PWM2_rising_value;
 unsigned int g_PWM2_falling_value;
 unsigned int g_PWM2_pulse_width;
+int ch = 1;
+int caputure_frag = 0;
+*/
+
+int g_ch1_rising_value, g_ch1_falling_value, g_ch1_pulse_width;
+int g_ch2_rising_value, g_ch2_falling_value, g_ch2_pulse_width;
 
 void putch(char data);
-void PWM1_Rising_interrupt(unsigned int PWM1_rising_value);
-void PWM1_Falling_interrupt(unsigned int PWM1_falling_value);
+//void PWM_Rising_interrupt(unsigned int PWM_rising_value);
+//void PWM_Falling_interrupt(unsigned int PWM_falling_value);
 
-void PWM2_Rising_interrupt(unsigned int PWM2_rising_value);
-void PWM2_Falling_interrupt(unsigned int PWM2_falling_value);
+//void PWM2_Rising_interrupt(unsigned int PWM2_rising_value);
+//void PWM2_Falling_interrupt(unsigned int PWM2_falling_value);
+
+void CH1_Rising_interrupt(void);
+void CH1_Falling_interrupt(void);
+void CH2_Rising_interrupt(void);
+void CH2_Falling_interrupt(void);
+
 
 void m1_on(int duty);
 void m2_on(int duty);
@@ -80,7 +92,7 @@ void main(void)
     int x, y;
     int x_duty, y_duty;
     int lservo_duty = 3000, mservo_duty = 3000;
-    unsigned int PWM1_pulse_width, PWM2_pulse_width;
+    int ch1_pulse_width, ch2_pulse_width;
     
 
     
@@ -99,16 +111,23 @@ void main(void)
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
     
-    CCP1_SetCallBack(PWM1_Rising_interrupt);
-    CCP2_SetCallBack(PWM1_Falling_interrupt);
-    CCP7_SetCallBack(PWM2_Rising_interrupt);
-    CCP8_SetCallBack(PWM2_Falling_interrupt);
+    //CCP1_SetCallBack(PWM_Rising_interrupt);
+    //CCP2_SetCallBack(PWM_Falling_interrupt);
+    //CCP7_SetCallBack(PWM2_Rising_interrupt);
+    //CCP8_SetCallBack(PWM2_Falling_interrupt);
+    
+    IOCBF0_SetInterruptHandler(CH2_Rising_interrupt);
+    IOCBF1_SetInterruptHandler(CH2_Falling_interrupt);
+    IOCCF2_SetInterruptHandler(CH1_Rising_interrupt);
+    IOCCF3_SetInterruptHandler(CH1_Falling_interrupt);
     
     m1_on(0);
     m2_on(0);
     m3_on(0);
     m4_on(0);
     __delay_ms(1000);
+    
+    TMR1_StartTimer();
     
     while (1)
     {
@@ -125,57 +144,58 @@ void main(void)
         
         
         //xé≤ï‚ê≥
-        if((0 <= g_PWM2_pulse_width) && (g_PWM2_pulse_width < 400)){
+        if((0 <= g_ch2_pulse_width) && (g_ch2_pulse_width < 400)){
             
             
-            PWM2_pulse_width = 0;
-            
-        }
-        else if((1500 <= g_PWM2_pulse_width) && (g_PWM2_pulse_width <= 1600)){
-            
-            PWM2_pulse_width = 1550;
+            ch2_pulse_width = 0;
             
         }
-        else if(3200 < g_PWM2_pulse_width){
+        else if((1500 <= g_ch2_pulse_width) && (g_ch2_pulse_width <= 1600)){
             
-            PWM2_pulse_width = 3200;
+            ch2_pulse_width = 1550;
+            
+        }
+        else if(3200 < g_ch2_pulse_width){
+            
+            ch2_pulse_width = 3200;
             
         }
         else{
             
-            PWM2_pulse_width = g_PWM2_pulse_width;
+            ch2_pulse_width = g_ch2_pulse_width;
             
         }
             
         
         //xé≤ï‚ê≥
-        if((0 <= g_PWM1_pulse_width) && (g_PWM1_pulse_width < 400)){
+        if((0 <= g_ch1_pulse_width) && (g_ch1_pulse_width < 400)){
             
             
-            PWM1_pulse_width = 0;
-            
-        }
-        else if((1500 <= g_PWM1_pulse_width) && (g_PWM1_pulse_width <= 1600)){
-            
-            PWM1_pulse_width = 1550;
+            ch1_pulse_width = 0;
             
         }
-        else if(3200 < g_PWM1_pulse_width){
+        else if((1500 <= g_ch1_pulse_width) && (g_ch1_pulse_width <= 1600)){
             
-            PWM1_pulse_width = 3200;
+            ch1_pulse_width = 1550;
+            
+        }
+        else if(3200 < g_ch1_pulse_width){
+            
+            ch1_pulse_width = 3200;
             
         }
         else{
             
-            PWM1_pulse_width = g_PWM1_pulse_width;
+            ch1_pulse_width = g_ch1_pulse_width;
             
         }
         
-        //printf("\rx:%u ",PWM2_pulse_width);
-        //printf("y:%u\n",PWM1_pulse_width);
+        //printf("\rx:%u ",g_ch2_pulse_width);
+        //printf("y:%u \n",g_ch1_pulse_width);
+      
         
-        x = PWM2_pulse_width - 1550;
-        y = PWM1_pulse_width - 1550;
+        x = ch2_pulse_width - 1550;
+        y = ch1_pulse_width - 1550;
         
         //printf("\rx:%d ",x_duty);
         //printf("y:%d\n",y_duty);
@@ -261,44 +281,37 @@ void putch(char data){
     EUSART_Write(data);
     
 }
-void PWM1_Rising_interrupt(unsigned int PWM1_rising_value){
+
+void CH1_Rising_interrupt(void){
     
-    g_PWM1_rising_value = PWM1_rising_value;
+    g_ch1_rising_value = TMR1_ReadTimer();
+}
+void CH1_Falling_interrupt(void){
+    
+    g_ch1_falling_value = TMR1_ReadTimer();
+    if(g_ch1_rising_value > g_ch1_falling_value){
+        ;   
+    }
+    else
+        g_ch1_pulse_width = g_ch1_falling_value - g_ch1_rising_value;
+    
     
 }
-void PWM1_Falling_interrupt(unsigned int PWM1_falling_value){
+void CH2_Rising_interrupt(void){
     
-    g_PWM1_falling_value = PWM1_falling_value;
+    g_ch2_rising_value = TMR1_ReadTimer();
     
-    if(g_PWM1_rising_value > g_PWM1_falling_value){
-        
-        //g_pulse_width = (65535 - g_falling_value) + g_rising_value;
+}
+void CH2_Falling_interrupt(void){
+    
+    g_ch2_falling_value = TMR1_ReadTimer();
+    if(g_ch2_rising_value > g_ch2_falling_value){
         ;
     }
     else
-        g_PWM1_pulse_width = g_PWM1_falling_value - g_PWM1_rising_value;
+        g_ch2_pulse_width = g_ch2_falling_value - g_ch2_rising_value;
     
 }
-
-void PWM2_Rising_interrupt(unsigned int PWM2_rising_value){
-    
-    g_PWM2_rising_value = PWM2_rising_value;
-    
-}
-void PWM2_Falling_interrupt(unsigned int PWM2_falling_value){
-    
-    g_PWM2_falling_value = PWM2_falling_value;
-    
-    if(g_PWM2_rising_value > g_PWM2_falling_value){
-        
-        //g_pulse_width = (65535 - g_falling_value) + g_rising_value;
-        ;
-    }
-    else
-        g_PWM2_pulse_width = g_PWM2_falling_value - g_PWM2_rising_value;
-    
-}
-
 void m1_on(int duty){
     
     if(duty > 0){
