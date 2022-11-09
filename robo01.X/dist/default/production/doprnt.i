@@ -867,11 +867,19 @@ static void pad(FILE *fp, char *buf, int p)
 
 
 }
-# 894 "D:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c99\\common\\doprnt.c"
-static void utoa(FILE *fp, unsigned long long d)
+# 443 "D:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c99\\common\\doprnt.c"
+static void dtoa(FILE *fp, long long d)
 {
+ char s;
     int i, p, w;
-    unsigned long long n;
+    long long n;
+
+
+    n = d;
+    s = n < 0 ? 1 : 0;
+    if (s) {
+        n = -n;
+    }
 
 
 
@@ -881,21 +889,33 @@ static void utoa(FILE *fp, unsigned long long d)
 
     p = (0 < prec) ? prec : 1;
     w = width;
+    if (s
 
 
-    n = d;
+
+    ) {
+        --w;
+  s = s ? '-' : '+';
+    }
+# 480 "D:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c99\\common\\doprnt.c"
     i = sizeof(dbuf) - 1;
     dbuf[i] = '\0';
-    while (i && (n || (0 < p)
+    while (!(i < 1) && (n || (0 < p)
 
 
 
     )) {
         --i;
-        dbuf[i] = '0' + (n % 10);
+        dbuf[i] = (char)((int)'0' + abs(n % 10));
         --p;
         --w;
         n = n / 10;
+    }
+
+
+    if (s != 0) {
+        --i;
+        dbuf[i] = s;
     }
 
 
@@ -922,26 +942,13 @@ vfpfcnvrt(FILE *fp, char *fmt[], va_list ap)
         prec = -1;
 # 1117 "D:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c99\\common\\doprnt.c"
   cp = *fmt;
-# 1239 "D:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c99\\common\\doprnt.c"
-  if (0
-# 1250 "D:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c99\\common\\doprnt.c"
-    || *cp == 'u'
-
-    ) {
-# 1295 "D:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c99\\common\\doprnt.c"
-   convarg.llu = (unsigned long long)(unsigned int)(*(unsigned int *)__va_arg(*(unsigned int **)ap, (unsigned int)0));
+# 1187 "D:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c99\\common\\doprnt.c"
+  if (*cp == 'd' || *cp == 'i') {
+# 1230 "D:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c99\\common\\doprnt.c"
+   convarg.ll = (long long)(int)(*(int *)__va_arg(*(int **)ap, (int)0));
 
    *fmt = cp+1;
-   switch (*cp) {
-
-
-
-
-
-    case 'u':
-     return (void) utoa(fp, convarg.llu);
-# 1316 "D:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c99\\common\\doprnt.c"
-   }
+   return (void) dtoa(fp, convarg.ll);
   }
 # 1509 "D:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c99\\common\\doprnt.c"
         ++*fmt;

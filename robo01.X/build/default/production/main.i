@@ -24771,7 +24771,11 @@ double y0(double);
 double y1(double);
 double yn(int, double);
 # 45 "main.c" 2
-# 61 "main.c"
+
+
+
+
+
 int g_ch1_rising_value, g_ch1_falling_value, g_ch1_pulse_width;
 int g_ch2_rising_value, g_ch2_falling_value, g_ch2_pulse_width;
 
@@ -24803,10 +24807,12 @@ void main(void)
 
     SYSTEM_Initialize();
 
-    int x, y;
+    int x, y, X, Y;
     int x_duty, y_duty;
     int lservo_duty = 3000, mservo_duty = 3000;
     int ch1_pulse_width, ch2_pulse_width;
+    int interval = 400;
+    double r2;
 
 
 
@@ -24818,7 +24824,13 @@ void main(void)
 
 
     (INTCONbits.PEIE = 1);
-# 119 "main.c"
+
+
+
+
+
+
+
     IOCBF0_SetInterruptHandler(CH2_Rising_interrupt);
     IOCBF1_SetInterruptHandler(CH2_Falling_interrupt);
     IOCCF2_SetInterruptHandler(CH1_Rising_interrupt);
@@ -24831,6 +24843,7 @@ void main(void)
     _delay((unsigned long)((1000)*(32000000/4000.0)));
 
     TMR1_StartTimer();
+    r2 = 1 / sqrtf(2);
 
     while (1)
     {
@@ -24902,32 +24915,67 @@ void main(void)
 
 
 
+        X = (r2 * x) + (r2 * y);
+        Y = (-r2 * x) + (r2 * y);
 
-        if(x > 0){
 
-            x_duty = (1023 * (x / 1650));
+
+        if(X > 1166){
+
+            X = 1166;
 
         }
-        else if(x < 0){
+        else if(X < -1096){
 
-            x_duty = (1023 * (x / 1550));
+            X = -1096;
+
+        }
+
+
+        if(Y > 1096){
+
+            Y = 1096;
+
+        }
+        else if(Y < -1096){
+
+            Y = -1096;
+
+        }
+
+
+
+
+        if(X > 0){
+
+            x_duty = (1023 * (X / 1166));
+
+        }
+        else if(X < 0){
+
+            x_duty = (1023 * (X / 1096));
 
         }
         else
             x_duty = 0;
 
-        if(y > 0){
 
-            y_duty = (1023 * (y / 1650));
+
+        if(Y > 0){
+
+            y_duty = (1023 * (Y / 1096));
 
         }
-        else if(y < 0){
+        else if(Y < 0){
 
-            y_duty = (1023 * (y / 1550));
+            y_duty = (1023 * (Y / 1096));
 
         }
         else
             y_duty = 0;
+
+
+
 
 
 
@@ -24967,10 +25015,12 @@ void main(void)
 
             mservo_duty++;
 
+
         }
         if((PORTCbits.RC0 == 1) && (PORTAbits.RA6 == 0) && (mservo_duty > 2500)){
 
             mservo_duty--;
+
 
         }
 

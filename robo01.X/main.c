@@ -47,17 +47,6 @@
 /*
                          Main application
  */
-/*unsigned int g_PWM1_rising_value;
-unsigned int g_PWM1_falling_value;
-unsigned int g_PWM1_pulse_width;
-
-unsigned int g_PWM2_rising_value;
-unsigned int g_PWM2_falling_value;
-unsigned int g_PWM2_pulse_width;
-int ch = 1;
-int caputure_frag = 0;
-*/
-
 int g_ch1_rising_value, g_ch1_falling_value, g_ch1_pulse_width;
 int g_ch2_rising_value, g_ch2_falling_value, g_ch2_pulse_width;
 
@@ -89,10 +78,12 @@ void main(void)
     // initialize the device
     SYSTEM_Initialize();
     
-    int x, y;
+    int x, y, X, Y;
     int x_duty, y_duty;
     int lservo_duty = 3000, mservo_duty = 3000;
     int ch1_pulse_width, ch2_pulse_width;
+    int interval = 400;
+    double r2;
     
 
     
@@ -111,11 +102,6 @@ void main(void)
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
     
-    //CCP1_SetCallBack(PWM_Rising_interrupt);
-    //CCP2_SetCallBack(PWM_Falling_interrupt);
-    //CCP7_SetCallBack(PWM2_Rising_interrupt);
-    //CCP8_SetCallBack(PWM2_Falling_interrupt);
-    
     IOCBF0_SetInterruptHandler(CH2_Rising_interrupt);
     IOCBF1_SetInterruptHandler(CH2_Falling_interrupt);
     IOCCF2_SetInterruptHandler(CH1_Rising_interrupt);
@@ -128,6 +114,7 @@ void main(void)
     __delay_ms(1000);
     
     TMR1_StartTimer();
+    r2 = 1 / sqrt(2);
     
     while (1)
     {
@@ -199,32 +186,67 @@ void main(void)
         
         //printf("\rx:%d ",x_duty);
         //printf("y:%d\n",y_duty);
+        X = (r2 * x) + (r2 * y);
+        Y = (-r2 * x) + (r2 * y);
         
-        if(x > 0){
+        
+        
+        if(X > 1166){
             
-            x_duty = (1023 * (x / 1650));
+            X = 1166;
             
         }
-        else if(x < 0){
+        else if(X < -1096){
             
-            x_duty = (1023 * (x / 1550));
+            X = -1096;
+            
+        }
+        
+        
+        if(Y > 1096){
+            
+            Y = 1096;
+            
+        }
+        else if(Y < -1096){
+            
+            Y = -1096;
+            
+        }
+        
+        
+        
+        
+        if(X > 0){
+            
+            x_duty = (1023 * (X / 1166));
+            
+        }
+        else if(X < 0){
+            
+            x_duty = (1023 * (X / 1096));
             
         }
         else
             x_duty = 0;
         
-        if(y > 0){
+       
+        
+        if(Y > 0){
             
-            y_duty = (1023 * (y / 1650));
+            y_duty = (1023 * (Y / 1096));
             
         }
-        else if(y < 0){
+        else if(Y < 0){
             
-            y_duty = (1023 * (y / 1550));
+            y_duty = (1023 * (Y / 1096));
             
         }
         else
             y_duty = 0;
+        
+        
+        
         
         
         
@@ -264,10 +286,12 @@ void main(void)
             
             mservo_duty++;
             
+            
         }
         if((DO1_PORT == 1) && (DO2_PORT == 0) && (mservo_duty > 2500)){
             
             mservo_duty--;
+            
             
         }
         
