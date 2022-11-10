@@ -53,6 +53,7 @@ int g_ch1_rising_value, g_ch1_falling_value, g_ch1_pulse_width;
 int g_ch2_rising_value, g_ch2_falling_value, g_ch2_pulse_width;
 int lservo_duty = 3000, mservo_duty = 3000;
 int l_reverse, m_reverse;
+int l_interval, m_interval;
 
 //プロトタイプ宣言
 void putch(char data);
@@ -229,10 +230,16 @@ void main(void)
             __delay_ms(1);
             
         }
+        else{
+            
+        }
         if((DO1_PORT == 1) && (DO2_PORT == 0) && (lservo_duty > 2300)){
             
             lservo_duty--;
             __delay_ms(1);
+            
+        }
+        else{
             
         }
         if((DO4_PORT == 1) && (DO3_PORT == 0) && (mservo_duty < 4000)){
@@ -241,10 +248,16 @@ void main(void)
             
             
         }
+        else{
+            
+        }
         if((DO3_PORT == 1) && (DO4_PORT == 0) && (mservo_duty > 2500)){
             
             mservo_duty--;
             
+            
+        }
+        else{
             
         }
         
@@ -419,10 +432,36 @@ void l_turn(void){
 }
 
 void TMR3_interrupt(void){
-    ;
+    
+    m_interval--;  
+    if(m_interval == 0){
+        
+        m_interval = 10;
+        switch(m_reverse){
+            case 0:
+                break;
+            case 1:
+                break;
+            default:
+                break;
+        }  
+    }  
 }
 void TMR5_interrupt(void){
     
+    l_interval--;  
+    if(l_interval == 0){
+        
+        l_interval = 10;
+        switch(m_reverse){
+            case 0:
+                break;
+            case 1:
+                break;
+            default:
+                break;
+        }  
+    }  
 }
 
 /**

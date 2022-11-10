@@ -9,11 +9,11 @@
 ### Memory Usage ###
  Intel Hex-file ranges:
   0h - 1FFFh		(dist/default/production\robo01.X.production.hex)
-  240Ah - 3009h		(dist/default/production\robo01.X.production.hex)
+  239Ah - 3009h		(dist/default/production\robo01.X.production.hex)
   10000h - 10007h		(dist/default/production\robo01.X.production.hex)
   1000Eh - 10011h		(dist/default/production\robo01.X.production.hex)
  Unused ranges:
-  2000h - 2409h
+  2000h - 2399h
   300Ah - FFFFh
   10008h - 1000Dh
 
@@ -537,7 +537,14 @@
 00001FE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001FF0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 ----------------------------------------------------------
-00002400 | -- -- -- -- -- -- -- -- -- -- H1 H1 H1 H1 H1 H1
+00002390 | -- -- -- -- -- -- -- -- -- -- H1 H1 H1 H1 H1 H1
+000023A0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+000023B0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+000023C0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+000023D0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+000023E0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+000023F0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00002400 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00002410 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00002420 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00002430 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1

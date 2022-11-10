@@ -103,31 +103,31 @@ TMR2_CLC4_OUT 29
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
 "10 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
-"74 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
+"75 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"262
+"275
 [v _CH1_Rising_interrupt CH1_Rising_interrupt `(v  1 e 1 0 ]
-"266
+"279
 [v _CH1_Falling_interrupt CH1_Falling_interrupt `(v  1 e 1 0 ]
-"277
+"290
 [v _CH2_Rising_interrupt CH2_Rising_interrupt `(v  1 e 1 0 ]
-"282
+"295
 [v _CH2_Falling_interrupt CH2_Falling_interrupt `(v  1 e 1 0 ]
-"292
+"305
 [v _m1_on m1_on `(v  1 e 1 0 ]
-"324
+"337
 [v _m2_on m2_on `(v  1 e 1 0 ]
-"351
+"364
 [v _m3_on m3_on `(v  1 e 1 0 ]
-"376
+"389
 [v _m4_on m4_on `(v  1 e 1 0 ]
-"404
+"417
 [v _r_turn r_turn `(v  1 e 1 0 ]
-"412
+"425
 [v _l_turn l_turn `(v  1 e 1 0 ]
-"421
+"434
 [v _TMR3_interrupt TMR3_interrupt `(v  1 e 1 0 ]
-"424
+"450
 [v _TMR5_interrupt TMR5_interrupt `(v  1 e 1 0 ]
 "67 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\mcc_generated_files/adc.c
 [v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
@@ -416,7 +416,7 @@ TMR2_CLC4_OUT 29
 "1456
 [v _T3CON T3CON `VEuc  1 e 1 @30 ]
 "1498
-[s S2518 . 1 `uc 1 TMR3ON 1 0 :1:0 
+[s S2520 . 1 `uc 1 TMR3ON 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 nT3SYNC 1 0 :1:2 
 `uc 1 T3OSCEN 1 0 :1:3 
@@ -424,24 +424,24 @@ TMR2_CLC4_OUT 29
 `uc 1 T3CS0 1 0 :1:6 
 `uc 1 T3CS1 1 0 :1:7 
 ]
-[s S2526 . 1 `uc 1 T3ON 1 0 :1:0 
+[s S2528 . 1 `uc 1 T3ON 1 0 :1:0 
 `uc 1 . 1 0 :3:1 
 `uc 1 T3CKPS0 1 0 :1:4 
 `uc 1 T3CKPS1 1 0 :1:5 
 `uc 1 TMR3CS0 1 0 :1:6 
 `uc 1 TMR3CS1 1 0 :1:7 
 ]
-[u S2533 . 1 `S517 1 . 1 0 `S524 1 . 1 0 `S2518 1 . 1 0 `S2526 1 . 1 0 ]
-[v _T3CONbits T3CONbits `VES2533  1 e 1 @30 ]
+[u S2535 . 1 `S517 1 . 1 0 `S524 1 . 1 0 `S2520 1 . 1 0 `S2528 1 . 1 0 ]
+[v _T3CONbits T3CONbits `VES2535  1 e 1 @30 ]
 "1613
 [v _T3GCON T3GCON `VEuc  1 e 1 @31 ]
 "1648
-[s S2578 . 1 `uc 1 GSS0 1 0 :1:0 
+[s S2580 . 1 `uc 1 GSS0 1 0 :1:0 
 `uc 1 GSS1 1 0 :1:1 
 `uc 1 . 1 0 :5:2 
 `uc 1 T3GE 1 0 :1:7 
 ]
-[s S2583 . 1 `uc 1 . 1 0 :2:0 
+[s S2585 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T3GVAL 1 0 :1:2 
 `uc 1 T3GGO_nDONE 1 0 :1:3 
 `uc 1 T3GSPM 1 0 :1:4 
@@ -449,11 +449,11 @@ TMR2_CLC4_OUT 29
 `uc 1 T3GPOL 1 0 :1:6 
 `uc 1 TMR3GE 1 0 :1:7 
 ]
-[s S2591 . 1 `uc 1 T3GSS0 1 0 :1:0 
+[s S2593 . 1 `uc 1 T3GSS0 1 0 :1:0 
 `uc 1 T3GSS1 1 0 :1:1 
 ]
-[u S2594 . 1 `S585 1 . 1 0 `S2578 1 . 1 0 `S2583 1 . 1 0 `S2591 1 . 1 0 ]
-[v _T3GCONbits T3GCONbits `VES2594  1 e 1 @31 ]
+[u S2596 . 1 `S585 1 . 1 0 `S2580 1 . 1 0 `S2585 1 . 1 0 `S2593 1 . 1 0 ]
+[v _T3GCONbits T3GCONbits `VES2596  1 e 1 @31 ]
 "1743
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
 "1805
@@ -743,7 +743,7 @@ TMR2_CLC4_OUT 29
 "10910
 [v _T5CON T5CON `VEuc  1 e 1 @1041 ]
 "10952
-[s S2321 . 1 `uc 1 TMR5ON 1 0 :1:0 
+[s S2323 . 1 `uc 1 TMR5ON 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 nT5SYNC 1 0 :1:2 
 `uc 1 T5OSCEN 1 0 :1:3 
@@ -751,24 +751,24 @@ TMR2_CLC4_OUT 29
 `uc 1 T5CS0 1 0 :1:6 
 `uc 1 T5CS1 1 0 :1:7 
 ]
-[s S2329 . 1 `uc 1 T5ON 1 0 :1:0 
+[s S2331 . 1 `uc 1 T5ON 1 0 :1:0 
 `uc 1 . 1 0 :3:1 
 `uc 1 T5CKPS0 1 0 :1:4 
 `uc 1 T5CKPS1 1 0 :1:5 
 `uc 1 TMR5CS0 1 0 :1:6 
 `uc 1 TMR5CS1 1 0 :1:7 
 ]
-[u S2336 . 1 `S517 1 . 1 0 `S524 1 . 1 0 `S2321 1 . 1 0 `S2329 1 . 1 0 ]
-[v _T5CONbits T5CONbits `VES2336  1 e 1 @1041 ]
+[u S2338 . 1 `S517 1 . 1 0 `S524 1 . 1 0 `S2323 1 . 1 0 `S2331 1 . 1 0 ]
+[v _T5CONbits T5CONbits `VES2338  1 e 1 @1041 ]
 "11067
 [v _T5GCON T5GCON `VEuc  1 e 1 @1042 ]
 "11102
-[s S2381 . 1 `uc 1 GSS0 1 0 :1:0 
+[s S2383 . 1 `uc 1 GSS0 1 0 :1:0 
 `uc 1 GSS1 1 0 :1:1 
 `uc 1 . 1 0 :5:2 
 `uc 1 T5GE 1 0 :1:7 
 ]
-[s S2386 . 1 `uc 1 . 1 0 :2:0 
+[s S2388 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T5GVAL 1 0 :1:2 
 `uc 1 T5GGO_nDONE 1 0 :1:3 
 `uc 1 T5GSPM 1 0 :1:4 
@@ -776,11 +776,11 @@ TMR2_CLC4_OUT 29
 `uc 1 T5GPOL 1 0 :1:6 
 `uc 1 TMR5GE 1 0 :1:7 
 ]
-[s S2394 . 1 `uc 1 T5GSS0 1 0 :1:0 
+[s S2396 . 1 `uc 1 T5GSS0 1 0 :1:0 
 `uc 1 T5GSS1 1 0 :1:1 
 ]
-[u S2397 . 1 `S585 1 . 1 0 `S2381 1 . 1 0 `S2386 1 . 1 0 `S2394 1 . 1 0 ]
-[v _T5GCONbits T5GCONbits `VES2397  1 e 1 @1042 ]
+[u S2399 . 1 `S585 1 . 1 0 `S2383 1 . 1 0 `S2388 1 . 1 0 `S2396 1 . 1 0 ]
+[v _T5GCONbits T5GCONbits `VES2399  1 e 1 @1042 ]
 "12312
 [v _ADRESL ADRESL `VEuc  1 e 1 @1166 ]
 "12332
@@ -1195,6 +1195,11 @@ TMR2_CLC4_OUT 29
 "54
 [v _lservo_duty lservo_duty `i  1 e 2 0 ]
 [v _mservo_duty mservo_duty `i  1 e 2 0 ]
+"55
+[v _m_reverse m_reverse `i  1 e 2 0 ]
+"56
+[v _l_interval l_interval `i  1 e 2 0 ]
+[v _m_interval m_interval `i  1 e 2 0 ]
 "61 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\mcc_generated_files/adc.c
 [v _ADC_InterruptHandler ADC_InterruptHandler `*.37(v  1 e 2 0 ]
 "62 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\mcc_generated_files/eusart.c
@@ -1251,21 +1256,21 @@ TMR2_CLC4_OUT 29
 [v _timer5ReloadVal timer5ReloadVal `VEus  1 e 2 0 ]
 "58
 [v _TMR5_InterruptHandler TMR5_InterruptHandler `*.37(v  1 e 2 0 ]
-"74 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
+"75 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"83
+"84
 [v main@r2 r2 `d  1 a 4 64 ]
-"79
+"80
 [v main@Y Y `i  1 a 2 70 ]
 [v main@X X `i  1 a 2 68 ]
-"80
+"81
 [v main@y_duty y_duty `i  1 a 2 62 ]
 [v main@x_duty x_duty `i  1 a 2 60 ]
-"79
+"80
 [v main@y y `i  1 a 2 58 ]
 [v main@x x `i  1 a 2 56 ]
-"254
+"267
 } 0
 "22 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sqrtf.c
 [v _sqrtf sqrtf `(f  1 e 4 0 ]
@@ -1281,9 +1286,9 @@ TMR2_CLC4_OUT 29
 "26
 [v sqrtf@t t `l  1 a 4 16 ]
 [v sqrtf@q q `l  1 a 4 12 ]
-[u S2978 . 4 `f 1 f 4 0 `l 1 s 4 0 `ul 1 u 4 0 ]
+[u S2980 . 4 `f 1 f 4 0 `l 1 s 4 0 `ul 1 u 4 0 ]
 "28
-[v sqrtf@__xc8_float_word __xc8_float_word `S2978  1 a 4 8 ]
+[v sqrtf@__xc8_float_word __xc8_float_word `S2980  1 a 4 8 ]
 "26
 [v sqrtf@i i `l  1 a 4 4 ]
 [v sqrtf@s s `l  1 a 4 0 ]
@@ -1294,9 +1299,9 @@ TMR2_CLC4_OUT 29
 "4 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nanf.c
 [v _nanf nanf `(f  1 e 4 0 ]
 {
-[u S3006 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
+[u S3008 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
 "6
-[v nanf@u u `S3006  1 a 4 4 ]
+[v nanf@u u `S3008  1 a 4 4 ]
 "4
 [v nanf@s s `*.25DCuc  1 p 2 0 ]
 "9
@@ -1304,17 +1309,17 @@ TMR2_CLC4_OUT 29
 "8 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S2831 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S2833 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S2836 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S2839 . 4 `l 1 i 4 0 `d 1 f 4 0 `S2831 1 fAsBytes 4 0 `S2836 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S2839  1 a 4 34 ]
+[s S2838 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S2841 . 4 `l 1 i 4 0 `d 1 f 4 0 `S2833 1 fAsBytes 4 0 `S2838 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S2841  1 a 4 34 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 28 ]
-[s S2908 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S2910 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S2911 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S2908 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S2911  1 a 2 38 ]
+[u S2913 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S2910 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S2913  1 a 2 38 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 33 ]
 "11
@@ -1363,21 +1368,21 @@ TMR2_CLC4_OUT 29
 [v ___fladd@a a `d  1 p 4 44 ]
 "237
 } 0
-"404 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
+"417 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
 [v _r_turn r_turn `(v  1 e 1 0 ]
 {
-"411
+"424
 } 0
-"412
+"425
 [v _l_turn l_turn `(v  1 e 1 0 ]
 {
-"419
+"432
 } 0
-"376
+"389
 [v _m4_on m4_on `(v  1 e 1 0 ]
 {
 [v m4_on@duty duty `i  1 p 2 15 ]
-"402
+"415
 } 0
 "74 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\mcc_generated_files/pwm9.c
 [v _PWM9_LoadDutyValue PWM9_LoadDutyValue `(v  1 e 1 0 ]
@@ -1385,11 +1390,11 @@ TMR2_CLC4_OUT 29
 [v PWM9_LoadDutyValue@dutyValue dutyValue `us  1 p 2 0 ]
 "81
 } 0
-"351 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
+"364 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
 [v _m3_on m3_on `(v  1 e 1 0 ]
 {
 [v m3_on@duty duty `i  1 p 2 15 ]
-"375
+"388
 } 0
 "74 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\mcc_generated_files/pwm3.c
 [v _PWM3_LoadDutyValue PWM3_LoadDutyValue `(v  1 e 1 0 ]
@@ -1397,11 +1402,11 @@ TMR2_CLC4_OUT 29
 [v PWM3_LoadDutyValue@dutyValue dutyValue `us  1 p 2 0 ]
 "81
 } 0
-"324 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
+"337 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
 [v _m2_on m2_on `(v  1 e 1 0 ]
 {
 [v m2_on@duty duty `i  1 p 2 15 ]
-"350
+"363
 } 0
 "74 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\mcc_generated_files/pwm4.c
 [v _PWM4_LoadDutyValue PWM4_LoadDutyValue `(v  1 e 1 0 ]
@@ -1409,11 +1414,11 @@ TMR2_CLC4_OUT 29
 [v PWM4_LoadDutyValue@dutyValue dutyValue `us  1 p 2 0 ]
 "81
 } 0
-"292 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
+"305 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
 [v _m1_on m1_on `(v  1 e 1 0 ]
 {
 [v m1_on@duty duty `i  1 p 2 15 ]
-"323
+"336
 } 0
 "15 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -1705,10 +1710,10 @@ TMR2_CLC4_OUT 29
 {
 "185
 } 0
-"424 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
+"450 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
 [v _TMR5_interrupt TMR5_interrupt `(v  1 e 1 0 ]
 {
-"426
+"465
 } 0
 "157 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\mcc_generated_files/tmr3.c
 [v _TMR3_ISR TMR3_ISR `(v  1 e 1 0 ]
@@ -1731,10 +1736,10 @@ TMR2_CLC4_OUT 29
 {
 "185
 } 0
-"421 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
+"434 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
 [v _TMR3_interrupt TMR3_interrupt `(v  1 e 1 0 ]
 {
-"423
+"449
 } 0
 "177 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_IOC PIN_MANAGER_IOC `(v  1 e 1 0 ]
@@ -1746,10 +1751,10 @@ TMR2_CLC4_OUT 29
 {
 "304
 } 0
-"266 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
+"279 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
 [v _CH1_Falling_interrupt CH1_Falling_interrupt `(v  1 e 1 0 ]
 {
-"276
+"289
 } 0
 "316 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\mcc_generated_files/pin_manager.c
 [v _IOCCF3_DefaultInterruptHandler IOCCF3_DefaultInterruptHandler `(v  1 e 1 0 ]
@@ -1761,10 +1766,10 @@ TMR2_CLC4_OUT 29
 {
 "274
 } 0
-"262 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
+"275 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
 [v _CH1_Rising_interrupt CH1_Rising_interrupt `(v  1 e 1 0 ]
 {
-"265
+"278
 } 0
 "286 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\mcc_generated_files/pin_manager.c
 [v _IOCCF2_DefaultInterruptHandler IOCCF2_DefaultInterruptHandler `(v  1 e 1 0 ]
@@ -1776,10 +1781,10 @@ TMR2_CLC4_OUT 29
 {
 "244
 } 0
-"282 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
+"295 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
 [v _CH2_Falling_interrupt CH2_Falling_interrupt `(v  1 e 1 0 ]
 {
-"291
+"304
 } 0
 "256 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\mcc_generated_files/pin_manager.c
 [v _IOCBF1_DefaultInterruptHandler IOCBF1_DefaultInterruptHandler `(v  1 e 1 0 ]
@@ -1791,10 +1796,10 @@ TMR2_CLC4_OUT 29
 {
 "214
 } 0
-"277 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
+"290 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\main.c
 [v _CH2_Rising_interrupt CH2_Rising_interrupt `(v  1 e 1 0 ]
 {
-"281
+"294
 } 0
 "226 D:\Users\hirot\Desktop\pic\Arm_robot\robo01.X\mcc_generated_files/pin_manager.c
 [v _IOCBF0_DefaultInterruptHandler IOCBF0_DefaultInterruptHandler `(v  1 e 1 0 ]

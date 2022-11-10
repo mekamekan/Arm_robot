@@ -24840,6 +24840,7 @@ int g_ch1_rising_value, g_ch1_falling_value, g_ch1_pulse_width;
 int g_ch2_rising_value, g_ch2_falling_value, g_ch2_pulse_width;
 int lservo_duty = 3000, mservo_duty = 3000;
 int l_reverse, m_reverse;
+int l_interval, m_interval;
 
 
 void putch(char data);
@@ -25016,10 +25017,16 @@ void main(void)
             _delay((unsigned long)((1)*(32000000/4000.0)));
 
         }
+        else{
+
+        }
         if((PORTCbits.RC0 == 1) && (PORTAbits.RA6 == 0) && (lservo_duty > 2300)){
 
             lservo_duty--;
             _delay((unsigned long)((1)*(32000000/4000.0)));
+
+        }
+        else{
 
         }
         if((PORTAbits.RA3 == 1) && (PORTAbits.RA7 == 0) && (mservo_duty < 4000)){
@@ -25028,10 +25035,16 @@ void main(void)
 
 
         }
+        else{
+
+        }
         if((PORTAbits.RA7 == 1) && (PORTAbits.RA3 == 0) && (mservo_duty > 2500)){
 
             mservo_duty--;
 
+
+        }
+        else{
 
         }
 
@@ -25206,8 +25219,34 @@ void l_turn(void){
 }
 
 void TMR3_interrupt(void){
-    ;
+
+    m_interval--;
+    if(m_interval == 0){
+
+        m_interval = 10;
+        switch(m_reverse){
+            case 0:
+                break;
+            case 1:
+                break;
+            default:
+                break;
+        }
+    }
 }
 void TMR5_interrupt(void){
 
+    l_interval--;
+    if(l_interval == 0){
+
+        l_interval = 10;
+        switch(m_reverse){
+            case 0:
+                break;
+            case 1:
+                break;
+            default:
+                break;
+        }
+    }
 }
