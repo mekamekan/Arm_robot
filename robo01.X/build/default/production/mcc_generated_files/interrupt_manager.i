@@ -23889,6 +23889,35 @@ char *tempnam(const char *, const char *);
 # 54 "mcc_generated_files/mcc.h" 2
 
 
+# 1 "mcc_generated_files/tmr5.h" 1
+# 101 "mcc_generated_files/tmr5.h"
+void TMR5_Initialize(void);
+# 130 "mcc_generated_files/tmr5.h"
+void TMR5_StartTimer(void);
+# 162 "mcc_generated_files/tmr5.h"
+void TMR5_StopTimer(void);
+# 197 "mcc_generated_files/tmr5.h"
+uint16_t TMR5_ReadTimer(void);
+# 236 "mcc_generated_files/tmr5.h"
+void TMR5_WriteTimer(uint16_t timerVal);
+# 272 "mcc_generated_files/tmr5.h"
+void TMR5_Reload(void);
+# 311 "mcc_generated_files/tmr5.h"
+void TMR5_StartSinglePulseAcquisition(void);
+# 350 "mcc_generated_files/tmr5.h"
+uint8_t TMR5_CheckGateValueStatus(void);
+# 368 "mcc_generated_files/tmr5.h"
+void TMR5_ISR(void);
+# 385 "mcc_generated_files/tmr5.h"
+void TMR5_CallBack(void);
+# 403 "mcc_generated_files/tmr5.h"
+ void TMR5_SetInterruptHandler(void (* InterruptHandler)(void));
+# 421 "mcc_generated_files/tmr5.h"
+extern void (*TMR5_InterruptHandler)(void);
+# 439 "mcc_generated_files/tmr5.h"
+void TMR5_DefaultInterruptHandler(void);
+# 56 "mcc_generated_files/mcc.h" 2
+
 # 1 "mcc_generated_files/pwm11.h" 1
 # 94 "mcc_generated_files/pwm11.h"
 void PWM11_Initialize(void);
@@ -23918,14 +23947,43 @@ _Bool PWM11_IsPhaseMatchOccured(void);
 _Bool PWM11_IsDutyCycleMatchOccured(void);
 # 414 "mcc_generated_files/pwm11.h"
 _Bool PWM11_IsPeriodMatchOccured(void);
-# 56 "mcc_generated_files/mcc.h" 2
+# 57 "mcc_generated_files/mcc.h" 2
+
+# 1 "mcc_generated_files/tmr3.h" 1
+# 101 "mcc_generated_files/tmr3.h"
+void TMR3_Initialize(void);
+# 130 "mcc_generated_files/tmr3.h"
+void TMR3_StartTimer(void);
+# 162 "mcc_generated_files/tmr3.h"
+void TMR3_StopTimer(void);
+# 197 "mcc_generated_files/tmr3.h"
+uint16_t TMR3_ReadTimer(void);
+# 236 "mcc_generated_files/tmr3.h"
+void TMR3_WriteTimer(uint16_t timerVal);
+# 272 "mcc_generated_files/tmr3.h"
+void TMR3_Reload(void);
+# 311 "mcc_generated_files/tmr3.h"
+void TMR3_StartSinglePulseAcquisition(void);
+# 350 "mcc_generated_files/tmr3.h"
+uint8_t TMR3_CheckGateValueStatus(void);
+# 368 "mcc_generated_files/tmr3.h"
+void TMR3_ISR(void);
+# 385 "mcc_generated_files/tmr3.h"
+void TMR3_CallBack(void);
+# 403 "mcc_generated_files/tmr3.h"
+ void TMR3_SetInterruptHandler(void (* InterruptHandler)(void));
+# 421 "mcc_generated_files/tmr3.h"
+extern void (*TMR3_InterruptHandler)(void);
+# 439 "mcc_generated_files/tmr3.h"
+void TMR3_DefaultInterruptHandler(void);
+# 58 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/pwm9.h" 1
 # 102 "mcc_generated_files/pwm9.h"
  void PWM9_Initialize(void);
 # 129 "mcc_generated_files/pwm9.h"
  void PWM9_LoadDutyValue(uint16_t dutyValue);
-# 57 "mcc_generated_files/mcc.h" 2
+# 59 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/pwm6.h" 1
 # 94 "mcc_generated_files/pwm6.h"
@@ -23956,7 +24014,7 @@ _Bool PWM6_IsPhaseMatchOccured(void);
 _Bool PWM6_IsDutyCycleMatchOccured(void);
 # 414 "mcc_generated_files/pwm6.h"
 _Bool PWM6_IsPeriodMatchOccured(void);
-# 58 "mcc_generated_files/mcc.h" 2
+# 60 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/tmr1.h" 1
 # 100 "mcc_generated_files/tmr1.h"
@@ -23977,7 +24035,7 @@ void TMR1_StartSinglePulseAcquisition(void);
 uint8_t TMR1_CheckGateValueStatus(void);
 # 387 "mcc_generated_files/tmr1.h"
 _Bool TMR1_HasOverflowOccured(void);
-# 59 "mcc_generated_files/mcc.h" 2
+# 61 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/tmr2.h" 1
 # 79 "mcc_generated_files/tmr2.h"
@@ -24237,14 +24295,14 @@ void TMR2_Period8BitSet(uint8_t periodVal);
 void TMR2_LoadPeriodRegister(uint8_t periodVal);
 # 867 "mcc_generated_files/tmr2.h"
 _Bool TMR2_HasOverflowOccured(void);
-# 60 "mcc_generated_files/mcc.h" 2
+# 62 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/pwm4.h" 1
 # 102 "mcc_generated_files/pwm4.h"
  void PWM4_Initialize(void);
 # 129 "mcc_generated_files/pwm4.h"
  void PWM4_LoadDutyValue(uint16_t dutyValue);
-# 61 "mcc_generated_files/mcc.h" 2
+# 63 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/pwm5.h" 1
 # 94 "mcc_generated_files/pwm5.h"
@@ -24275,14 +24333,14 @@ _Bool PWM5_IsPhaseMatchOccured(void);
 _Bool PWM5_IsDutyCycleMatchOccured(void);
 # 414 "mcc_generated_files/pwm5.h"
 _Bool PWM5_IsPeriodMatchOccured(void);
-# 62 "mcc_generated_files/mcc.h" 2
+# 64 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/pwm3.h" 1
 # 102 "mcc_generated_files/pwm3.h"
  void PWM3_Initialize(void);
 # 129 "mcc_generated_files/pwm3.h"
  void PWM3_LoadDutyValue(uint16_t dutyValue);
-# 63 "mcc_generated_files/mcc.h" 2
+# 65 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/adc.h" 1
 # 72 "mcc_generated_files/adc.h"
@@ -24338,7 +24396,7 @@ void ADC_ISR(void);
 extern void (*ADC_InterruptHandler)(void);
 # 398 "mcc_generated_files/adc.h"
 void ADC_DefaultInterruptHandler(void);
-# 64 "mcc_generated_files/mcc.h" 2
+# 66 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/eusart.h" 1
 # 75 "mcc_generated_files/eusart.h"
@@ -24393,12 +24451,12 @@ void EUSART_SetErrorHandler(void (* interruptHandler)(void));
 void EUSART_SetTxInterruptHandler(void (* interruptHandler)(void));
 # 505 "mcc_generated_files/eusart.h"
 void EUSART_SetRxInterruptHandler(void (* interruptHandler)(void));
-# 65 "mcc_generated_files/mcc.h" 2
-# 80 "mcc_generated_files/mcc.h"
+# 67 "mcc_generated_files/mcc.h" 2
+# 82 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 93 "mcc_generated_files/mcc.h"
+# 95 "mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 105 "mcc_generated_files/mcc.h"
+# 107 "mcc_generated_files/mcc.h"
 void WDT_Initialize(void);
 # 50 "mcc_generated_files/interrupt_manager.c" 2
 
@@ -24423,6 +24481,14 @@ void __attribute__((picinterrupt(("")))) INTERRUPT_InterruptManager (void)
         else if(PIE1bits.RCIE == 1 && PIR1bits.RCIF == 1)
         {
             EUSART_RxDefaultInterruptHandler();
+        }
+        else if(PIE4bits.TMR5IE == 1 && PIR4bits.TMR5IF == 1)
+        {
+            TMR5_ISR();
+        }
+        else if(PIE4bits.TMR3IE == 1 && PIR4bits.TMR3IF == 1)
+        {
+            TMR3_ISR();
         }
         else
         {

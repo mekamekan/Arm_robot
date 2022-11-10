@@ -47,9 +47,14 @@
 /*
                          Main application
  */
+
+//グローバル変数
 int g_ch1_rising_value, g_ch1_falling_value, g_ch1_pulse_width;
 int g_ch2_rising_value, g_ch2_falling_value, g_ch2_pulse_width;
+int lservo_duty = 3000, mservo_duty = 3000;
+int l_reverse, m_reverse;
 
+//プロトタイプ宣言
 void putch(char data);
 void CH1_Rising_interrupt(void);
 void CH1_Falling_interrupt(void);
@@ -61,6 +66,8 @@ void m3_on(int duty);
 void m4_on(int duty);
 void r_turn(void);
 void l_turn(void);
+void TMR3_interrupt(void);
+void TMR5_interrupt(void);
 
 
 
@@ -71,7 +78,6 @@ void main(void)
     
     int x, y, X, Y;
     int x_duty, y_duty;
-    int lservo_duty = 3000, mservo_duty = 3000;
     int ch1_pulse_width, ch2_pulse_width;
     int interval = 400;
     double r2;
@@ -96,6 +102,9 @@ void main(void)
     IOCBF1_SetInterruptHandler(CH2_Falling_interrupt);
     IOCCF2_SetInterruptHandler(CH1_Rising_interrupt);
     IOCCF3_SetInterruptHandler(CH1_Falling_interrupt);
+    
+    TMR3_SetInterruptHandler(TMR3_interrupt);
+    TMR5_SetInterruptHandler(TMR5_interrupt);
     
     m1_on(0);
     m2_on(0);
@@ -409,6 +418,12 @@ void l_turn(void){
     
 }
 
+void TMR3_interrupt(void){
+    ;
+}
+void TMR5_interrupt(void){
+    
+}
 
 /**
  End of File
