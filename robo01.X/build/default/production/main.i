@@ -24780,23 +24780,14 @@ int g_ch1_rising_value, g_ch1_falling_value, g_ch1_pulse_width;
 int g_ch2_rising_value, g_ch2_falling_value, g_ch2_pulse_width;
 
 void putch(char data);
-
-
-
-
-
-
 void CH1_Rising_interrupt(void);
 void CH1_Falling_interrupt(void);
 void CH2_Rising_interrupt(void);
 void CH2_Falling_interrupt(void);
-
-
 void m1_on(int duty);
 void m2_on(int duty);
 void m3_on(int duty);
 void m4_on(int duty);
-
 void r_turn(void);
 void l_turn(void);
 
@@ -24813,7 +24804,6 @@ void main(void)
     int ch1_pulse_width, ch2_pulse_width;
     int interval = 400;
     double r2;
-
 
 
 
@@ -24849,8 +24839,6 @@ void main(void)
     {
 
 
-
-
         PWM6_DutyCycleSet(mservo_duty);
         PWM6_LoadBufferSet();
 
@@ -24858,61 +24846,8 @@ void main(void)
         PWM5_LoadBufferSet();
 
 
-
-
-        if((0 <= g_ch2_pulse_width) && (g_ch2_pulse_width < 400)){
-
-
-            ch2_pulse_width = 0;
-
-        }
-        else if((1500 <= g_ch2_pulse_width) && (g_ch2_pulse_width <= 1600)){
-
-            ch2_pulse_width = 1550;
-
-        }
-        else if(3200 < g_ch2_pulse_width){
-
-            ch2_pulse_width = 3200;
-
-        }
-        else{
-
-            ch2_pulse_width = g_ch2_pulse_width;
-
-        }
-
-
-
-        if((0 <= g_ch1_pulse_width) && (g_ch1_pulse_width < 400)){
-
-
-            ch1_pulse_width = 0;
-
-        }
-        else if((1500 <= g_ch1_pulse_width) && (g_ch1_pulse_width <= 1600)){
-
-            ch1_pulse_width = 1550;
-
-        }
-        else if(3200 < g_ch1_pulse_width){
-
-            ch1_pulse_width = 3200;
-
-        }
-        else{
-
-            ch1_pulse_width = g_ch1_pulse_width;
-
-        }
-
-
-
-
-
-        x = ch2_pulse_width - 1550;
-        y = ch1_pulse_width - 1550;
-
+        x = g_ch2_pulse_width - 1550;
+        y = g_ch1_pulse_width - 1550;
 
 
         X = (r2 * x) + (r2 * y);
@@ -24920,71 +24855,80 @@ void main(void)
 
 
 
-        if(X > 1166){
 
-            X = 1166;
 
-        }
-        else if(X < -1096){
+        if(X > 900){
 
-            X = -1096;
+            X = 1000;
 
         }
+        else if((-20 < X) && (X < 20)){
 
-
-        if(Y > 1096){
-
-            Y = 1096;
+            X = 0;
 
         }
-        else if(Y < -1096){
+        else if(X < -500){
 
-            Y = -1096;
+            X = -500;
 
         }
+        else
+            ;
 
 
+        if(Y > 900){
+
+            Y = 1000;
+
+        }
+        else if((-20 < Y) && (Y < 20)){
+
+            Y = 0;
+
+        }
+        else if(Y < -500){
+
+            Y = -500;
+
+        }
+        else
+            ;
 
 
         if(X > 0){
 
-            x_duty = (1023 * (X / 1166));
+            x_duty = (1023 * (X / 900));
 
         }
         else if(X < 0){
 
-            x_duty = (1023 * (X / 1096));
+            x_duty = (1023 * (X / 500));
 
         }
         else
             x_duty = 0;
 
 
-
         if(Y > 0){
 
-            y_duty = (1023 * (Y / 1096));
+            y_duty = (1023 * (Y / 900));
 
         }
         else if(Y < 0){
 
-            y_duty = (1023 * (Y / 1096));
+            y_duty = (1023 * (Y / 500));
 
         }
         else
             y_duty = 0;
 
 
-
-
-
-
-        if((PORTCbits.RC0 == 0) && (PORTAbits.RA6 == 0)){
+        if((PORTAbits.RA3 == 0) && (PORTAbits.RA7 == 0)){
 
             r_turn();
 
         }
-        else if((PORTAbits.RA7 == 0) && (PORTAbits.RA3 == 0)){
+        else if((PORTAbits.RA6 == 0) && (PORTCbits.RC0 == 0)){
 
             l_turn();
 
@@ -25005,19 +24949,19 @@ void main(void)
             _delay((unsigned long)((1)*(32000000/4000.0)));
 
         }
-        if((PORTAbits.RA3 == 1) && (PORTAbits.RA7 == 0) && (lservo_duty > 2300)){
+        if((PORTCbits.RC0 == 1) && (PORTAbits.RA6 == 0) && (lservo_duty > 2300)){
 
             lservo_duty--;
             _delay((unsigned long)((1)*(32000000/4000.0)));
 
         }
-        if((PORTAbits.RA7 == 1) && (PORTAbits.RA3 == 0) && (mservo_duty < 4000)){
+        if((PORTAbits.RA3 == 1) && (PORTAbits.RA7 == 0) && (mservo_duty < 4000)){
 
             mservo_duty++;
 
 
         }
-        if((PORTCbits.RC0 == 1) && (PORTAbits.RA6 == 0) && (mservo_duty > 2500)){
+        if((PORTAbits.RA7 == 1) && (PORTAbits.RA3 == 0) && (mservo_duty > 2500)){
 
             mservo_duty--;
 
